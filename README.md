@@ -73,6 +73,7 @@ Installation of darknet in Windows (GPU and No-GPU version):
                                         
     o	To download darknet first install gitbash which is found here  https://git-scm.com/download/win 
     o	Open gitbash and type git clone https://github.com/AlexeyAB/darknet.git. 
+    
     This should download the darknet and save it in C:\Users\mohanaditya\ (the name should be your system name). 
     
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captureas.JPG?raw=true)
@@ -90,6 +91,20 @@ Installation of darknet in Windows (GPU and No-GPU version):
 
         o	OpenCV 2.4.13: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.2-vc14.exe/download
 
-o	Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name as opencv_2.4 (for 2.x version) Copy the folder and paste it in C:\ for visual studio to get these while building darknet.
+Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name as opencv_2.4 (for 2.x version) Copy the folder and paste it in C:\ for visual studio to get these while building darknet.
 
+
+
+ ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture3.JPG?raw=true)
+ 
+    GPU CC >= 3.0 if you use cuDNN + CUDA:
+        o	Download cudnn by registering in nvidia: https://developer.nvidia.com/rdp/cudnn-download
+        o	Instructions to install cudnn: http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
+        
+Now let’s build darknet for Non-GPU:
+	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
+
+	We have to copy few files in new paths so that darknet will pick them while executing: 
+
+	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
 
