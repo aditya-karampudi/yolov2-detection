@@ -1,13 +1,19 @@
 ## Installing YoloV2 and training Custom images for object detection
 The procedure for executing darknet in linux and windows is almost identical except the installation.
+
 First I will provide the guidance for installation of darknet in both OS and then I will dive into execution part.
 
 This repo supports darknet for:
-  •	both Windows and Linux
-  •	both OpenCV 3.x and OpenCV 2.4.13
-  •	both cuDNN 5 and cuDNN 6
-  •	CUDA >= 7.5
-  •	also create SO-library on Linux and DLL-library on Windows
+
+•	both Windows and Linux
+
+•	both OpenCV 3.x and OpenCV 2.4.13
+
+•	both cuDNN 5 and cuDNN 6
+
+•	CUDA >= 7.5
+
+•	also create SO-library on Linux and DLL-library on Windows
 
 Installation of darknet in LINUX (GPU version):
   •	Open new linux terminal in aws or google cloud which should have the following packages installed.
