@@ -98,13 +98,39 @@ Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name a
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture3.JPG?raw=true)
  
     GPU CC >= 3.0 if you use cuDNN + CUDA:
+    
         o	Download cudnn by registering in nvidia: https://developer.nvidia.com/rdp/cudnn-download
         o	Instructions to install cudnn: http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
         
 Now let’s build darknet for Non-GPU:
-	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
 
-	We have to copy few files in new paths so that darknet will pick them while executing: 
+      	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
 
-	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
+    	We have to copy few files in new paths so that darknet will pick them while executing: 
+
+    	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
+
+# Now let’s build darknet for Non-GPU:
+
+    	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
+
+    	We have to copy few files in new paths so that darknet will pick them while executing: 
+
+    	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
+
+## Darknet for GPU:
+
+If you have CUDA 8.0 and OpenCV3.0 then follow the steps:
+           
+    	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
+
+    	We have to copy few files in new paths so that darknet will pick them while executing: 
+    
+    	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
+    
+    	If you want to build with CUDNN to speed up then:
+        o	download and install cuDNN 6.0 for CUDA 8.0: https://developer.nvidia.com/cudnn
+        o	add Windows system variable cudnn with path to CUDNN: https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg
+        o	open \darknet.sln -> (right click on project) -> properties -> C/C++ -> Preprocessor -> Preprocessor Definitions, and add at the beginning of line: CUDNN;
+
 
