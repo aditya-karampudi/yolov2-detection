@@ -80,11 +80,11 @@ o	Now the darknet is ready for training custom images.
     
  Make sure you have the following dependencies installed (skip CUDA and Cudnn if you don’t have GPU):
  
-   Windows MS Visual Studio 2015 (v140): https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409
+ o  Windows MS Visual Studio 2015 (v140): https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409
 
-   CUDA 8.0: https://developer.nvidia.com/cuda-downloads
+ o  CUDA 8.0: https://developer.nvidia.com/cuda-downloads
 
-   Install either of the opencv:
+ o  Install either of the opencv:
         
         o	OpenCV 3.x: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.2.0/opencv-3.2.0-vc14.exe/download
 
@@ -96,14 +96,14 @@ Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name a
 
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture3.JPG?raw=true)
  
-    GPU CC >= 3.0 if you use cuDNN + CUDA:
+ o  GPU CC >= 3.0 if you use cuDNN + CUDA:
     
         o	Download cudnn by registering in nvidia: https://developer.nvidia.com/rdp/cudnn-download
         o	Instructions to install cudnn: http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
         
 ### Now let’s build darknet for Non-GPU:
 
-      	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
+    	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
 
     	We have to copy few files in new paths so that darknet will pick them while executing: 
 
@@ -165,14 +165,69 @@ Co-ordinates: We have to create a text file which should contain the class of th
         	Change the class on top right of the labelTool dialogbox and click confirm class to label multi-classes.
         	Once the labelling is finished the text file are generated in BBox-Label/label/001 they should look in the format.
  
- ![alt text] (https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture22.JPG?raw=true)
+
+ ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture22.JPG?raw=true)
  
- ![alt text] (https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captur12e.JPG?raw=true)
+ ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captur12e.JPG?raw=true)
  
      	But this is not the format that we need so open file convert.ipynb in jupyter notebook present in BBox-Label folder. Execute this code and it will create files in BBox-Label/label/converted_labels.
      	Copy the files present in converted_labels and paste them in BBox-Label/Images/001
      	Now create a train and test split file. Open train _test_split.ipynb present in \Dodge\BBox-Label\BBox-Label\Images\001. Execute it two times and then train.txt and test.txt files are generated. 
      	Now we have data and we have to upload all the files present in \Dodge\BBox-Label\BBox-Label\Images\001  in linux under darknet/data/hd/ and in windows create folder hd in C:\Users\mohanaditaya\darknet\build\darknet\x64\data (replace my name with the system name (mohanaditya)) and paste all the files in hd folder.
      	The hd folder should have the images, text file consisting boundaries information, train data and test data
+
+
+•	Need to make three changes in few yolo files
+•	Go to darknet/cfg:  
+    
+    o	Create new text file and copy the data present in yolo-voc.2.0.cfg to the new file and do the following changes in the new text file
+        	 In Line 3 set batch=64
+        	In Line 4 set subdivisions=8
+        	In line 244 set classes=1
+        	In line 237 set filters = (classes + 5)*5
+    Save the file as yolo-obj.cfg
+
+    o	Create new text file and type the following:
+        	Type the name of the objects you want to detect
+    Save the file as obj.names
+    
+    o	Create new text file type the following:
+        	classes= 0  #number of classes
+        	train  = data/hd/train.txt #path for train data
+        	valid  = data/hd/test.txt  #path for test data
+        	names = obj.names # names for displaying
+        	backup = backup/
+    Save the file as obj.data
+    
+•	For training the darknet we need to give the following command in darknet folder
+./darknet detector train cfg/obj.data cfg/yolo-obj.cfg
+
+The weights are stored in *backup/* folder
+
+•   If training stops in the middle one can start training with pre-trained weights present in backup folder by running:
+./darknet detector train cfg/obj.data cfg/yolo-obj.cfg yolo-obj_2000.weights
+
+
+•	For testing an image after 1000 iterations:
+./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_1000.weights data/hd/nameofimage.jpg
+
+Please site darknet if you use in your project:
+@article{redmon2016yolo9000,
+  title={YOLO9000: Better, Faster, Stronger},
+  author={Redmon, Joseph and Farhadi, Ali},
+  journal={arXiv preprint arXiv:1612.08242},
+  year={2016}
+}
+
+References:
+https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/
+https://github.com/AlexeyAB/darknet
+https://github.com/jxgu1016/BBox-Label-Tool-Multi-Class
+
+
+
+
+
+
 
 
