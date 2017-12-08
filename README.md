@@ -221,7 +221,9 @@ Please site darknet if you use in your project:
 
 References:
 https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/
+
 https://github.com/AlexeyAB/darknet
+
 https://github.com/jxgu1016/BBox-Label-Tool-Multi-Class
 
 
