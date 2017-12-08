@@ -81,4 +81,4 @@ Installation of darknet in Windows (GPU and No-GPU version):
  [alt text](https://github.com/aditya-karampudi/yolov2-detection/tree/master/image/Captureas.JPG)
     
 
-
+![stack Overflow](http://lmsotfy.com/so.png)
