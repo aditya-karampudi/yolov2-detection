@@ -51,8 +51,7 @@ o	GPU CC >= 3.0 if you use cuDNN + CUDA:
 
     o	sudo apt-get update
     o	sudo apt-get dist-upgrade
-    o	git clone https://github.com/AlexeyAB/darknet.git
-    o	#this will get the darknet data into linux
+    o	git clone https://github.com/AlexeyAB/darknet.git  #this will get the darknet data into linux
     o	Now we have the data in linux it is time to execute Makefile which will install necessary dependencies in linux
     o	Go to darknet folder by cd ./darknet and type ‘vi Makefile’
     o	In the file change the first six lines to:
@@ -69,7 +68,7 @@ o	Type ‘make’ in the directory where Makefile is present. It should compile 
 o	Now the darknet is ready for training custom images.
 
 
-Installation of darknet in Windows (GPU and No-GPU version):
+## Installation of darknet in Windows (GPU and No-GPU version):
                                         
     o	To download darknet first install gitbash which is found here  https://git-scm.com/download/win 
     o	Open gitbash and type git clone https://github.com/AlexeyAB/darknet.git. 
@@ -102,7 +101,7 @@ Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name a
         o	Download cudnn by registering in nvidia: https://developer.nvidia.com/rdp/cudnn-download
         o	Instructions to install cudnn: http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
         
-Now let’s build darknet for Non-GPU:
+### Now let’s build darknet for Non-GPU:
 
       	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
 
@@ -110,7 +109,7 @@ Now let’s build darknet for Non-GPU:
 
     	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
 
-# Now let’s build darknet for Non-GPU:
+### Now let’s build darknet for Non-GPU:
 
     	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
 
@@ -145,11 +144,21 @@ If you have other version of CUDA (not 8.0) and openCV2.4 then
         o	add Windows system variable cudnn with path to CUDNN: https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg
         o	open \darknet.sln -> (right click on project) -> properties -> C/C++ -> Preprocessor -> Preprocessor Definitions, and add at the beginning of line: CUDNN;
 
+## Training custom images in linux/windows
 Now we have the darknet installed in windows and linux. It is time to train custom images:
 
     The Yolo needs three types of files:
         1.)	Images in the form of .jpg (if the images are in .png format open cmd in the folder and type ren *.png *.jpg)
         2.)	Object co-ordinates in the images in .txt format
         3.)	The train and test split file containing the names of images
+ 
+Images: It is said that for each class there must be atleast 2000 images for YOLO to train. One can also start with less images.
+
+Co-ordinates: We have to create a text file which should contain the class of the image, the xmin, ymin, xmax, ymax co-ordinates.
+
+    The repository consists of BBox multi-label folder which does the labelling part.
+        	In the repository go to BBox-Label/Images/001 and paste the images which you want to label
+        	Open the file boundaries.ipynb in jupyter notebook (use python 2.7)
+        	Execute the file and a new window comes up:
 
 
