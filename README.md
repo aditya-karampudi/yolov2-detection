@@ -69,5 +69,16 @@ o	Type ‘make’ in the directory where Makefile is present. It should compile 
 o	Now the darknet is ready for training custom images.
 
 
+Installation of darknet in Windows (GPU and No-GPU version):
+                                        
+    o	To download darknet first install gitbash which is found here  https://git-scm.com/download/win 
+    o	Open gitbash and type git clone https://github.com/AlexeyAB/darknet.git This should download the darknet and save it in          C:\Users\mohanaditya\ (the name should be your system name). 
+    
+    
+    
+    
+    
+ ![alt text](https://github.com/aditya-karampudi/yolov2-detection/tree/master/image/Captureas.JPG)
+    
 
 
