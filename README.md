@@ -72,13 +72,24 @@ o	Now the darknet is ready for training custom images.
 Installation of darknet in Windows (GPU and No-GPU version):
                                         
     o	To download darknet first install gitbash which is found here  https://git-scm.com/download/win 
-    o	Open gitbash and type git clone https://github.com/AlexeyAB/darknet.git This should download the darknet and save it in          C:\Users\mohanaditya\ (the name should be your system name). 
-    
-    
-    
-    
+    o	Open gitbash and type git clone https://github.com/AlexeyAB/darknet.git. 
+    This should download the darknet and save it in C:\Users\mohanaditya\ (the name should be your system name). 
     
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captureas.JPG?raw=true)
     
+    
+ Make sure you have the following dependencies installed (skip CUDA and Cudnn if you don’t have GPU):
+ 
+   Windows MS Visual Studio 2015 (v140): https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409
 
-![stack Overflow](http://lmsotfy.com/so.png)
+   CUDA 8.0: https://developer.nvidia.com/cuda-downloads
+
+   Install either of the opencv:
+        
+        o	OpenCV 3.x: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.2.0/opencv-3.2.0-vc14.exe/download
+
+        o	OpenCV 2.4.13: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.2-vc14.exe/download
+
+o	Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name as opencv_2.4 (for 2.x version) Copy the folder and paste it in C:\ for visual studio to get these while building darknet.
+
+
