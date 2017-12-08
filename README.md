@@ -2,7 +2,6 @@
 
 This repo consists installation guidance for YOLOV2 on linux/windows and training for custom object detection.
 
-## Installing Yolo in Linux
 The procedure for executing darknet in linux and windows is almost identical except the installation.
 
 First I will provide the guidance for installation of darknet in both OS and then I will dive into execution part.
@@ -19,7 +18,7 @@ This repo supports darknet for:
 
     •	also create SO-library on Linux and DLL-library on Windows
 
-Installation of darknet in LINUX (GPU version):
+## Installation of darknet in LINUX (GPU version):
 
     •	Open new linux terminal in aws or google cloud which should have the following packages installed.
 
