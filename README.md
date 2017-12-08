@@ -61,10 +61,9 @@ o	GPU CC >= 3.0 if you use cuDNN + CUDA:
               o	OPENMP=1
               o	LIBSO=0
     Save it by pressing ESC and then :wq! and press ENTER
-    
-o	Type ‘make’ in the directory where Makefile is present. It should compile all the computations and should show build successful. If it doesn’t happen then search the errors in web.
+    o	Type ‘make’ in the directory where Makefile is present. It should compile all the computations and should show build successful. If it doesn’t happen then search the errors in web.
 
-o	Now the darknet is ready for training custom images.
+*Now the darknet is ready for training custom images.*
 
 
 ## Installation of darknet in Windows (GPU and No-GPU version):
@@ -147,14 +146,14 @@ Images: Yolo needs 2000 images of each class to train. One can also start with l
 
 Co-ordinates: We have to create a text file which should contain the class of the image, the xmin, ymin, xmax, ymax co-ordinates.
 
-    The repository consists of BBox multi-label folder which does the labelling part.
-        	In the repository go to BBox-Label/Images/001 and paste the images which you want to label
+    This repository consists BBox multi-label folder which does the labelling part.
+        	Clon the repository into your system, go to BBox-Label/Images/001 and paste the images which you want to label
         	Open the file boundaries.ipynb in jupyter notebook (use python 2.7)
         	Execute the file and a new window comes up:
         	Type 001 in the top box and press Enter. For labelling information check here: https://github.com/jxgu1016/BBox-Label-Tool-Multi-Class
-        	On the top right there are classes. Change the class.txt file in BBox-Label folder to change the classes. (Yolo needs only numerical representation of classes So if there are five classes then write 0 1 2 3 4 in class.txt yolo will not consider strings so don’t name as elephant, human, chair etc.)
+        	On the top right there are classes. Change the class.txt file in BBox-Label folder to change the classes. 
         	Change the class on top right of the labelTool dialogbox and click confirm class to label multi-classes.
-        	Once the labelling is finished the text file are generated in BBox-Label/label/001 they should look in the format.
+        	Once the labelling is finished the text files are generated in BBox-Label/label/001 they should look in the format.
  
 
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture22.JPG?raw=true)
@@ -163,9 +162,9 @@ Co-ordinates: We have to create a text file which should contain the class of th
  
      	But this is not the format that we need so open file convert.ipynb in jupyter notebook present in BBox-Label folder. Execute this code and it will create files in BBox-Label/label/converted_labels.
      	Copy the files present in converted_labels and paste them in BBox-Label/Images/001
-     	Now create a train and test split file. Open train _test_split.ipynb present in \Dodge\BBox-Label\BBox-Label\Images\001. Execute it two times and then train.txt and test.txt files are generated. 
-     	Now we have data and we have to upload all the files present in \Dodge\BBox-Label\BBox-Label\Images\001  in linux under darknet/data/hd/ and in windows create folder hd in C:\Users\mohanaditaya\darknet\build\darknet\x64\data (replace my name with the system name (mohanaditya)) and paste all the files in hd folder.
-     	The hd folder should have the images, text file consisting boundaries information, train data and test data file
+     	Now to create train and test split text file. Open train _test_split.ipynb present in \Dodge\BBox-Label\BBox-Label\Images\001. Execute it two times and then train.txt and test.txt files are generated. Change the value in line 10 to whatever percentage split one needs. By default the split is 90:10     
+     	Now we have data and we have to upload all the files present in \Dodge\BBox-Label\BBox-Label\Images\001 to linux under darknet/data/hd/ and for windows create folder hd in C:\Users\mohanaditaya\darknet\build\darknet\x64\data (replace my name with the system name (mohanaditya)) and paste all the files in hd folder.
+     	The hd folder should have the images, text files consisting boundaries information, train data and test data file
 
 
 •	Need to make three changes in few yolo files
@@ -196,7 +195,7 @@ Co-ordinates: We have to create a text file which should contain the class of th
 The weights are stored in **backup/** folder
 
 •   If training stops in the middle one can start training with pre-trained weights present in backup folder by running:
-./darknet detector train cfg/obj.data cfg/yolo-obj.cfg yolo-obj_2000.weights
+**./darknet detector train cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_2000.weights**
 
 
 •	For testing an image after 1000 iterations:
