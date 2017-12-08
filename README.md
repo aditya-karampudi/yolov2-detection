@@ -134,3 +134,22 @@ If you have CUDA 8.0 and OpenCV3.0 then follow the steps:
         o	open \darknet.sln -> (right click on project) -> properties -> C/C++ -> Preprocessor -> Preprocessor Definitions, and add at the beginning of line: CUDNN;
 
 
+If you have other version of CUDA (not 8.0) and openCV2.4 then
+
+    	Open C:\Users\mohanaditya\darknet\build\darknet\darknet.vcxproj (replace with your path) by using Notepad, find 2 places with "CUDA 8.0" and change it to your CUDA-version.d
+    	If you have OpenCV 2.4.13 instead of 3.0 then you should change paths after \darknet.sln is opened in visual studio
+        o	(right click on project) -> properties -> C/C++ -> General -> Additional Include Directories: C:\opencv_2.4\opencv\build\include
+        o	(right click on project) -> properties -> Linker -> General -> Additional Library Directories: C:\opencv_2.4\opencv\build\x64\vc14\bin
+    	If you want to build with CUDNN to speed up then:
+        o	download and install cuDNN 6.0 for CUDA 7.0: https://developer.nvidia.com/cudnn
+        o	add Windows system variable cudnn with path to CUDNN: https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg
+        o	open \darknet.sln -> (right click on project) -> properties -> C/C++ -> Preprocessor -> Preprocessor Definitions, and add at the beginning of line: CUDNN;
+
+Now we have the darknet installed in windows and linux. It is time to train custom images:
+
+    The Yolo needs three types of files:
+        1.)	Images in the form of .jpg (if the images are in .png format open cmd in the folder and type ren *.png *.jpg)
+        2.)	Object co-ordinates in the images in .txt format
+        3.)	The train and test split file containing the names of images
+
+
