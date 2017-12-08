@@ -160,5 +160,19 @@ Co-ordinates: We have to create a text file which should contain the class of th
         	In the repository go to BBox-Label/Images/001 and paste the images which you want to label
         	Open the file boundaries.ipynb in jupyter notebook (use python 2.7)
         	Execute the file and a new window comes up:
+        	Type 001 in the top box and press Enter. For labelling information check here: https://github.com/jxgu1016/BBox-Label-Tool-Multi-Class
+        	On the top right there are classes. Change the class.txt file in BBox-Label folder to change the classes. (Yolo needs only numerical representation of classes So if there are five classes then write 0 1 2 3 4 in class.txt yolo will not consider strings so don’t name as elephant, human, chair etc.)
+        	Change the class on top right of the labelTool dialogbox and click confirm class to label multi-classes.
+        	Once the labelling is finished the text file are generated in BBox-Label/label/001 they should look in the format.
+ 
+ ![alt text] (https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture22.JPG?raw=true)
+ 
+ ![alt text] (https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captur12e.JPG?raw=true)
+ 
+     	But this is not the format that we need so open file convert.ipynb in jupyter notebook present in BBox-Label folder. Execute this code and it will create files in BBox-Label/label/converted_labels.
+     	Copy the files present in converted_labels and paste them in BBox-Label/Images/001
+     	Now create a train and test split file. Open train _test_split.ipynb present in \Dodge\BBox-Label\BBox-Label\Images\001. Execute it two times and then train.txt and test.txt files are generated. 
+     	Now we have data and we have to upload all the files present in \Dodge\BBox-Label\BBox-Label\Images\001  in linux under darknet/data/hd/ and in windows create folder hd in C:\Users\mohanaditaya\darknet\build\darknet\x64\data (replace my name with the system name (mohanaditya)) and paste all the files in hd folder.
+     	The hd folder should have the images, text file consisting boundaries information, train data and test data
 
 
