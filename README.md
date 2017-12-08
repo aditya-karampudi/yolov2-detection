@@ -1,6 +1,6 @@
 # Yolov2 for custom object detection
 
-This repo consists of steps needed for installing YOLOV2 on linux/windows and training for custom object detection.
+This repo consists installation guidance for YOLOV2 on linux/windows and training for custom object detection.
 
 ## Installing Yolo in Linux
 The procedure for executing darknet in linux and windows is almost identical except the installation.
