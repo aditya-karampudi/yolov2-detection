@@ -1,8 +1,8 @@
-# yolov2 for custom object detection
+# Yolov2 for custom object detection
 
 This repo consists of steps needed for installing YOLOV2 on linux/windows and training for custom object detection.
 
-## Installing YoloV2 and training Custom images for object detection
+## Installing Yolo in Linux
 The procedure for executing darknet in linux and windows is almost identical except the installation.
 
 First I will provide the guidance for installation of darknet in both OS and then I will dive into execution part.
@@ -100,14 +100,6 @@ Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name a
     
         o	Download cudnn by registering in nvidia: https://developer.nvidia.com/rdp/cudnn-download
         o	Instructions to install cudnn: http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
-        
-### Now let’s build darknet for Non-GPU:
-
-    	Go to C:\Users\mohanaditya\darknet\build\darknet (replace with your path), double-click on darknet_no_gpu.sln This should open Microsoft visual studio and in menu bar set x64 and Release and then select Build in menu bar and click Build darknet.
-
-    	We have to copy few files in new paths so that darknet will pick them while executing: 
-
-    	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
 
 ### Now let’s build darknet for Non-GPU:
 
@@ -152,7 +144,7 @@ Now we have the darknet installed in windows and linux. It is time to train cust
         2.)	Object co-ordinates in the images in .txt format
         3.)	The train and test split file containing the names of images
  
-Images: It is said that for each class there must be atleast 2000 images for YOLO to train. One can also start with less images.
+Images: Yolo needs 2000 images of each class to train. One can also start with less images.
 
 Co-ordinates: We have to create a text file which should contain the class of the image, the xmin, ymin, xmax, ymax co-ordinates.
 
@@ -174,14 +166,14 @@ Co-ordinates: We have to create a text file which should contain the class of th
      	Copy the files present in converted_labels and paste them in BBox-Label/Images/001
      	Now create a train and test split file. Open train _test_split.ipynb present in \Dodge\BBox-Label\BBox-Label\Images\001. Execute it two times and then train.txt and test.txt files are generated. 
      	Now we have data and we have to upload all the files present in \Dodge\BBox-Label\BBox-Label\Images\001  in linux under darknet/data/hd/ and in windows create folder hd in C:\Users\mohanaditaya\darknet\build\darknet\x64\data (replace my name with the system name (mohanaditya)) and paste all the files in hd folder.
-     	The hd folder should have the images, text file consisting boundaries information, train data and test data
+     	The hd folder should have the images, text file consisting boundaries information, train data and test data file
 
 
 •	Need to make three changes in few yolo files
 •	Go to darknet/cfg:  
     
     o	Create new text file and copy the data present in yolo-voc.2.0.cfg to the new file and do the following changes in the new text file
-        	 In Line 3 set batch=64
+        	In Line 3 set batch=64
         	In Line 4 set subdivisions=8
         	In line 244 set classes=1
         	In line 237 set filters = (classes + 5)*5
@@ -200,16 +192,25 @@ Co-ordinates: We have to create a text file which should contain the class of th
     Save the file as obj.data
     
 •	For training the darknet we need to give the following command in darknet folder
-./darknet detector train cfg/obj.data cfg/yolo-obj.cfg
+**./darknet detector train cfg/obj.data cfg/yolo-obj.cfg**
 
-The weights are stored in *backup/* folder
+The weights are stored in **backup/** folder
 
 •   If training stops in the middle one can start training with pre-trained weights present in backup folder by running:
 ./darknet detector train cfg/obj.data cfg/yolo-obj.cfg yolo-obj_2000.weights
 
 
 •	For testing an image after 1000 iterations:
-./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_1000.weights data/hd/nameofimage.jpg
+**./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_10000.weights data/hd/nameofimage.jpg**
+
+• To save the detected image:
+**./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_10000.weights data/hd/nameofimage.jpg -a**
+
+•To predict on test images 
+**./darknet detector valid cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_10000.weights**
+The output will be stored in **results/** as **comp3_test.txt** file which contains the ***name of image, probability of its detection, xmin, ymin, xmax, ymax***
+
+
 
 Please site darknet if you use in your project:
 @article{redmon2016yolo9000,
@@ -219,7 +220,7 @@ Please site darknet if you use in your project:
   year={2016}
 }
 
-References:
+**References:**
 https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/
 
 https://github.com/AlexeyAB/darknet
