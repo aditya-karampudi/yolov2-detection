@@ -188,9 +188,11 @@ Co-ordinates: We have to create a text file which should contain the class of th
         	names = obj.names # names for displaying
         	backup = backup/
     Save the file as obj.data
+   
+•   Download the pre-trained weights into darknet folder from https://pjreddie.com/media/files/darknet19_448.conv.23
     
 •	For training the darknet we need to give the following command in darknet folder
-**./darknet detector train cfg/obj.data cfg/yolo-obj.cfg**
+**./darknet detector train cfg/obj.data cfg/yolo-obj.cfg darknet19_448.conv.23**
 
 The weights are stored in **backup/** folder
 
