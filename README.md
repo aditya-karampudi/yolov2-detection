@@ -156,7 +156,7 @@ Co-ordinates: We have to create a text file which should contain the class of th
         	Once the labelling is finished the text files are generated in BBox-Label/label/001 they should look in the format.
  
 
- ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Capture22.JPG?raw=true)
+ ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Screenshot_43.png?raw=true)
  
  ![alt text](https://github.com/aditya-karampudi/yolov2-detection/blob/master/image/Captur12e.JPG?raw=true)
  
