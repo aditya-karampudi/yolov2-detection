@@ -107,6 +107,10 @@ Unzip them and change the folder name to opencv_3.0 (for 3.x version) and name a
 
     	Copy the file opencv_world320.dll and opencv_ffmpeg320_64.dll which are present in C:\opencv_3.0\opencv\build\x64\vc14\bin and paste them in C:\Users\mohanaditya\darknet\build\darknet\x64\ (replace with your path). Basically the two open_cv files should be present in the folder where darknet.exe is present.
 
+## if error pops up in visual studio:
+   
+if build gets unsuccessful due to "Cannot find path for highgui_c.h in opencv2\highgui" then   in solution explorer window right click on project name "darknet_no_gpu" and select properties. Then go to Linker, in General paste the following path under Additional Diretories
+C:\opencv_3.0\build\x64\vc14\lib;C:\opencv_3.0\build\include;C:\opencv_3.0\build\include\opencv2;C:\opencv_2.4.13\build\x64\vc12\lib;%(AdditionalLibraryDirectories)
 ## Darknet for GPU:
 
 If you have CUDA 8.0 and OpenCV3.0 then follow the steps:
